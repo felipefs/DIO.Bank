@@ -22,13 +22,13 @@ namespace DIO.Bank
                         InserirConta();
                         break;
                     case "3":
-                        // Transferir();
+                        Transferir();
                         break;
                     case "4":
-                        // Sacar();
+                        Sacar();
                         break;
                     case "5":
-                        // Depositar();
+                        Depositar();
                         break;
                     case "C":
                         Console.Clear();
@@ -45,6 +45,42 @@ namespace DIO.Bank
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
 
+        }
+
+        private static void Sacar()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser sacado: ");
+            double entradaValorSaque = double.Parse(Console.ReadLine());
+
+            list_contas[indiceConta].Sacar(entradaValorSaque);
+        }
+
+        private static void Depositar()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser depositado: ");
+            double entradaValorDeposito = double.Parse(Console.ReadLine());
+
+            list_contas[indiceConta].Depositar(entradaValorDeposito);
+        }
+
+        private static void Transferir()
+        {
+            Console.Write("Digite o número da conta de origem: ");
+            int indiceContaOrigem = int.Parse(Console.ReadLine());
+
+             Console.Write("Digite o número da conta destino: ");
+            int indiceContaDestino = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser transferido: ");
+            double entradaValorTransf = double.Parse(Console.ReadLine());
+
+            list_contas[indiceContaOrigem].Transferir(entradaValorTransf,list_contas[indiceContaDestino]);
         }
 
         private static void ListarContas()
